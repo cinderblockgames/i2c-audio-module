@@ -15,5 +15,7 @@ For the module itself, flash [/I2C_MP3_Module](/I2C_MP3_Module) to the board.  I
 A CircuitPython library for interfacing with the module is provided at [/CIRCUITPY/lib/i2c_audio.py](/CIRCUITPY/lib/i2c_audio.py).  
 A simple example of using this library is provided at [/CIRCUITPY/code.py](/CIRCUITPY/code.py).  The `i2c` declaration on lines 5/6 needs to be the correct line for your controller board and setup.
 
+Note:  the `list_files` command currently returns only files in the base directory of the SD card.
+
 # Contributions
 Contributions are welcome!  There's definitely some hackiness going on here, but it works - at least for MP3s.  I'd love for it to work consistently for other file types (without dying with horrible static).  Conceptually, that's just code changes, not any physical problems.
