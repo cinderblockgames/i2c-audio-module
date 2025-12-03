@@ -10,9 +10,9 @@ Benefits of using the QT Py are 1) no-solder I2C connection over STEMMA QT, and 
 Benefits of using the XIAO are 1) cheaper.  However, power has to be provided directly to the XIAO.  If powering only the XIAO and allowing the controller to be powered by it, then connect all four I2C cables.  If powering both the XIAO and the controller separately, do not connect power between the two boards.
 
 # Code
-For the module itself, flash [/I2C_MP3_Module] to the board.  If you are using a QT Py, the code will connect over the STEMMA QT I2C connection; if you are using a XIAO, the code will connect over the standard I2C connection.
+For the module itself, flash [/I2C_MP3_Module](/I2C_MP3_Module) to the board.  If you are using a QT Py, the code will connect over the STEMMA QT I2C connection; if you are using a XIAO, the code will connect over the standard I2C connection.
 
-A CircuitPython library for interfacing with the module is provided at [/CIRCUITPY/lib/i2c_audio.py].  A simple example of using this library is provided at [/CIRCUITPY/code.py].
+A CircuitPython library for interfacing with the module is provided at [/CIRCUITPY/lib/i2c_audio.py](/CIRCUITPY/lib/i2c_audio.py).  A simple example of using this library is provided at [/CIRCUITPY/code.py](/CIRCUITPY/code.py).
 
 # Contributions
 Contributions are welcome!  There's definitely some hackiness going on here, but it works - at least for MP3s.  I'd love for it to work consistently for other file types (without dying with horrible static).  Conceptually, that's just code changes, not any physical problems.
