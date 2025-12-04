@@ -6,8 +6,8 @@ This module uses [arduino-audio-tools](https://github.com/pschatzmann/arduino-au
 # Physical build
 The physical components of this build are an [Adafruit Audio BFF](https://www.adafruit.com/product/5769) and either an [Adafruit QT Py RP2040](https://www.adafruit.com/product/4900) or a [Seeed Studio XIAO RP2040](https://www.seeedstudio.com/XIAO-RP2040-v1-0-p-5026.html), attached back to back.
 
-Benefits of using the QT Py are 1) no-solder I2C connection over STEMMA QT, and 2) power can be supplied to the module over I2C.  
-Benefits of using the XIAO are 1) cheaper.  However, power has to be provided directly to the XIAO.  If powering only the XIAO and allowing the controller to be powered by it, then connect all four I2C cables.  If powering both the XIAO and the controller separately, do not connect power between the two boards.
+Benefits of using the QT Py are 1) no-solder I2C connection over STEMMA QT, and 2) power can be supplied to the module over the STEMMA QT I2C connection, even though it's 3.3V and not 5V.
+Benefits of using the XIAO are 1) cheaper.  However, if you are powering off the controller board, make sure you're providing 5V and not 3.3V, as the speaker requires 5V.
 
 # Code
 For the module itself, flash [/I2C_MP3_Module](/I2C_MP3_Module) to the board.  If you are using a QT Py, the code will connect over the STEMMA QT I2C connection; if you are using a XIAO, the code will connect over the standard I2C connection.
