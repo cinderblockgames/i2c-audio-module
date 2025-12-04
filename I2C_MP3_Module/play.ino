@@ -10,6 +10,7 @@ void startPlaying() {
   if (playNext != empty) {
     audioFile = SD.open(playNext);
     playNext = empty;
+    copier.setActive(true);
     copier.begin(decoder, audioFile);
   }
   state = ready;
@@ -17,7 +18,13 @@ void startPlaying() {
 
 void stopPlaying() {
   playNext = empty;
+  cleanUp();
+  state = ready;
+  stopFlag = false;
+}
+
+void cleanUp() {
+  copier.setActive(false);
   copier.end();
   audioFile.close();
-  state = ready;
 }

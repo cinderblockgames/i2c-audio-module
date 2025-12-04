@@ -19,12 +19,11 @@
 #include <ArduinoJson.hpp>
 #include "AudioTools.h"
 #include "AudioTools/AudioCodecs/CodecMP3Helix.h"
-#include <EEPROM.h>
 #include <SD.h>
 #include <SPI.h>
 #include <Wire.h>
 
-
+///// try multidecoder again!
 // setup
 String empty = "";
 AudioInfo info(44100, 2, 16);
@@ -37,6 +36,7 @@ EncodedAudioStream decoder(&volume, &mp3);
 File audioFile;
 StreamCopy copier;
 String playNext = empty;
+bool stopFlag = false; // split out from event and put into standard loop
 
 // messaging
 String ready = "{ \"ready\": 1 }";
@@ -45,7 +45,7 @@ String state = ready;
 String i2cResponse = empty;
 
 void setup() {  
-  //Serial.begin(115200);
+  Serial.begin(115200);
   prepareOutput();
   prepareFilesystem();
   prepareI2C(); // Processes I2C command separately.
@@ -53,9 +53,12 @@ void setup() {
 }
 
 void loop() {
+  if (stopFlag) {
+    stopPlaying();
+  }
   if (copier.copy()) {
     return;
   }
-  audioFile.close();
+  cleanUp();
   startPlaying();
 }

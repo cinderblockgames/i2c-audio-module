@@ -44,7 +44,7 @@ void processPlayNext(String filepath) {
 }
 
 void processStop() {
-  stopPlaying();
+  stopFlag = true;
 }
 
 void processVolume(int newVolume) {
