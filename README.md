@@ -1,3 +1,5 @@
+# NOTE: THIS IS PRE-ALPHA, DO NOT USE IT UNTIL THERE IS A FIRST RELEASE
+
 # i2c-audio-module
 Code and design for an Arduino audio peripheral that can be managed over I2C for use with any language controller.
 
