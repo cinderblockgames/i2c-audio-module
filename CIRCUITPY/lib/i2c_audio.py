@@ -67,9 +67,9 @@ class I2CAudio:
         return self._get_data('{ "command": "get_state" }', 14)
 
     def _get_files(self):
-        l = self._get_data('{ "command": "list_files" }', 10)
+        l = self._get_data('{ "command": "get_files_length" }', 10)
         length = self._str_to_int(l)
-        return self._get_data('{ "command": "get_response" }', length)
+        return self._get_data('{ "command": "list_files" }', length)
 
     def connect(self):
         while not self._bus.try_lock():
