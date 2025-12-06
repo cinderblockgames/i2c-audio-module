@@ -42,7 +42,8 @@ bool stopFlag = false; // split out from event and put into standard loop
 String ready = "{ \"ready\": 1 }";
 String not_ready = "{ \"ready\": 0 }";
 String state = ready;
-String i2cResponse = empty;
+String files = empty;
+String filesLength = empty;
 
 void setup() {  
   Serial.begin(115200);
