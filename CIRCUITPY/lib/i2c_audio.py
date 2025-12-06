@@ -72,8 +72,14 @@ class I2CAudio:
         return self._get_data('{ "command": "list_files" }', length)
 
     def connect(self):
-        while not self._bus.try_lock():
-            pass
+        # Keep trying until the module is ready.
+        while True:
+            try:
+                while not self._bus.try_lock():
+                    pass
+                break
+            except:
+                pass
 
         self._get_state()  # Do this first, otherwise things get wonky.
 
