@@ -73,13 +73,8 @@ class I2CAudio:
 
     def connect(self):
         # Keep trying until the module is ready.
-        while True:
-            try:
-                while not self._bus.try_lock():
-                    pass
-                break
-            except:
-                pass
+        while not self._bus.try_lock():
+            pass
 
         self._get_state()  # Do this first, otherwise things get wonky.
 
