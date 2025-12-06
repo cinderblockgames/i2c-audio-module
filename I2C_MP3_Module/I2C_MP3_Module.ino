@@ -23,7 +23,6 @@
 #include <SPI.h>
 #include <Wire.h>
 
-///// try multidecoder again!
 // setup
 String empty = "";
 AudioInfo info(44100, 2, 16);
@@ -43,13 +42,13 @@ String ready = "{ \"ready\": 1 }";
 String not_ready = "{ \"ready\": 0 }";
 String state = ready;
 String files = empty;
-String filesLength = empty;
+String filesLength = "0000000000";
 
 void setup() {  
   Serial.begin(115200);
+  prepareI2C(); // Processes I2C command separately.
   prepareOutput();
   prepareFilesystem();
-  prepareI2C(); // Processes I2C command separately.
   disableLEDs();
 }
 

@@ -17,7 +17,7 @@ void prepareFilesystem() {
   SD.begin(PIN_SD_CS);
 
   files = listFilesAsJson();
-  String length = "0000000000" + String(files.length());
+  String length = filesLength + String(files.length());
   filesLength = length.substring(length.length()-10);
 }
 

@@ -9,8 +9,8 @@ void setNext(String filepath) {
 void startPlaying() {
   if (playNext != empty) {
     audioFile = SD.open(playNext);
+    print("playing: " + playNext);
     playNext = empty;
-    copier.setActive(true);
     copier.begin(decoder, audioFile);
   }
   state = ready;
@@ -24,7 +24,6 @@ void stopPlaying() {
 }
 
 void cleanUp() {
-  copier.setActive(false);
   copier.end();
   audioFile.close();
 }
