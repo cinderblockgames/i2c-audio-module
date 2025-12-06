@@ -1,4 +1,5 @@
 import json
+import time
 
 I2C_ADDRESS = 0x35
 
@@ -69,18 +70,19 @@ class I2CAudio:
     def _get_files(self):
         l = self._get_data('{ "command": "get_files_length" }', 10)
         length = self._str_to_int(l)
-        return self._get_data('{ "command": "list_files" }', length)
+        if length > 0:
+            return self._get_data('{ "command": "list_files" }', length)
 
     def connect(self):
-        # Keep trying until the module is ready.
-        while not self._bus.try_lock():
-            pass
-
-        self._get_state()  # Do this first, otherwise things get wonky.
-
+        while True:
+            files = self._get_files()
+            if files:
+                break
+            else:
+                time.sleep(0.5)
+        
         self._files = Directory('/')
-        files = json.loads(self._get_files())
-        for file in files:
+        for file in json.loads(files):
             dir = self._files
             dir_path = []
             for path in file.split('/')[:-1]:
